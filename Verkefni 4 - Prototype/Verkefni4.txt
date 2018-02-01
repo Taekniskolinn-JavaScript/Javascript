@@ -1,0 +1,76 @@
+Jadyn Margrét Jackson
+Verkefni 4 - Prototype
+------------------------------------------------------------------------
+Verkefni 4.1
+------------------------------------------------------------------------
+
+function Geimflaug() {
+    this.name = "SpaceRacer";
+    this.life = 10;
+    this.showName = function(){
+        console.log("This is " + this.name + ".");
+    };
+}
+console.log("\n Dæmi A \n");
+var Geimflaug1 = new Geimflaug();
+var Geimflaug2 = new Geimflaug();
+var Geimflaug3 = new Geimflaug();
+console.log(Geimflaug1.name);
+console.log("I have " +Geimflaug1.life + " lives.");
+Geimflaug1.showName();
+
+console.log("\n Dæmi B \n");
+Geimflaug2.name = "USS. Zamolodchikova";
+console.log(Geimflaug2.name);
+
+console.log("\n Dæmi C \n");
+Geimflaug.prototype.speed = 5;
+Geimflaug.prototype.fly = function(){
+    console.log(this.speed += 1);
+};
+Geimflaug1.fly();
+
+console.log("\n Dæmi D \n");
+var Geimflaug4 = new Geimflaug();
+Geimflaug4.damage = function(){
+    this.life -= 1;
+};
+console.log("Before damage() : " +Geimflaug4.life);
+Geimflaug4.damage();
+console.log("After damage() : " +Geimflaug4.life);
+------------------------------------------------------------------------
+Verkefni 4.2
+------------------------------------------------------------------------
+Erfðir:
+Þegar þú notað call() þá kallaru á þá þætti sem þér langar að fá frá þeim
+function t.d
+function Teacher(first, last, age, gender, interests, subject) {
+  Person.call(this, first, last, age, gender, interests);
+
+  this.subject = subject;
+}
+hérna nær Teacher í allar upplýsingar frá Person og erfir þær. 
+hann tekur sem sagt first, last, age , gender, intrests 
+frá person
+------------------------------------------------------------------------
+Verkefni 4.3
+------------------------------------------------------------------------
+class er sérstakt function en class getur ekki verið hoistað eins og function.
+class er með tvö components: class expression og class declarations.
+
+class Animal {
+  constructor(animal1, animal2) {
+    this.animal1 = animal1;
+    this.animal2 = animal2;
+  }
+
+  get animals() {
+    return this.line();
+  }
+
+  line() {
+    return this.animal1 +" og " + this.animal2 + " eru vinir";
+  }
+}
+const animel = new Animal("burd", "waterfishy");
+console.log(animel.animals);
