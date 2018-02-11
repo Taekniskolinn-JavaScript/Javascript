@@ -1,0 +1,57 @@
+﻿1.
+"getElementById()" það er fljótasta aðferðin  af því að það skilar frá sér DOM.
+
+
+2.
+"querySelectorAll()"  það skilar öllum elementum sem passa við ákveðna css klasa og getur verið valið í gegnum index númerum.
+Dæmi:
+_____________________________________________________
+HTML
+<h2 class="pink">Lorem Ipsum</h2>
+<p class="pink">Lorem Ipsum</p> 
+
+JS
+var x = document.querySelectorAll(".pink");
+x[0].style.backgroundColor = "pink";
+_____________________________________________________
+
+Í JS er notað "querySelectorAll()" til þess að fá öll elementin
+sem hafa klassann "pink", og svo notað "x[0]" til þess að skilgreina hvaða element á að fá bleika backgrunninn, þannig að 
+paragraph með klassann "pink" fær ekki bleikann bakgrunn.
+
+
+3.
+NodeList getur verið "live collection", sem þýðir að allar breytingar sem gerast í DOM-inu er sýnt í safninu.
+Dæmi:
+_____________________________________________________
+HTML
+<p> hi </p>
+<p> bye </p>
+
+JS
+var myNodelist = document.querySelectorAll("p");
+myNodelist[1].innerHTML;
+_____________________________________________________
+
+Í JS er skilgreint að "myNodelist" er breyta sem tekur inn öll paragraph tögin með querySelectorAll().
+Undir því er svo sagt "myNodelist[1].innerHTML" sem, ef notað væri í HTML skjalinu, mundi skila þá: 
+"bye" því það er seinna <p> tagið sem var notað.
+
+
+4.
+getElementsByTagName() er eins og "querySelectorAll()" nema í staðinn skilar það elementum eftir ákveðnum tögum.
+Dæmi:
+_____________________________________________________
+var x = document.getElementsByTagName("LI");
+_____________________________________________________
+
+Dæmið hér fyrir ofan sýnir, að "getElementsByTagName" tekur inn öll element sem hafa "li" tagið og setur það í breytu "x".
+
+
+5.
+Öll linebreaks og tabs í DOM trénu myndu birtast sem #text nodes.
+Þannig að ef við myndum nota reference sem byrjaði á elementi með fyrstChild,
+þá myndi nextSibling ekki vísa á næsta elementið, heldur benda á þetta "#text" node.
+Það er hægt að henda þeim út með því að nota CSS til þess að koma í veg fyrir þeim,
+eða enda HTML tögunum á seinni línunni því DOM-ið skilgreinir allt inn í tögunum ekki
+sem auka node, þannig að þú getur gert linebreak inn í tögunum (en það lítur ekki sérstaklega vel út).
