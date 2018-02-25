@@ -1,0 +1,1 @@
+Kóðinn tekur fyrsta tagið (a) sem er linkur úr HTML-inu og skilar því.

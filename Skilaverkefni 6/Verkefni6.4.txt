@@ -1,0 +1,1 @@
+Þessar þrjár leiðir nota button, hafa event í vefsíðunni þegar hún er að hlaðast, og input tag. Button er besta leiðin.
