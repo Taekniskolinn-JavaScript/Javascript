@@ -1,5 +1,5 @@
 "use strict";
-
+var el = document.getElementsByTagName("canvas")[0];
 var ctx = null;
 var tileW = 40, tileH = 40;
 var mapW = 40, mapH = 10;
@@ -45,44 +45,19 @@ Character.prototype.placeAt = function(x, y)
 		((tileW-this.dimensions[0])/2)),
 		((tileH*y) + ((tileH-this.dimensions[1])/2))];
 };
-Character.prototype.processMovement = function(t)
-{
-	if(this.tileFrom[0] == this.tileTo[0]&&
-		this.tileFrom[1] == this.tileTo[1])
-	{
-		return false;
-	}
-	if((t-this.timeMoved)>=this.delayMove)
-	{
-		this.placeAt(this.tileTo[0], this.tileTo[1]);
-	}
-	else
-	{
-		this.posistion[0] = (this.tileFrom[0]* tileW) +
-			((tileW - this.dimensions[0])/2);
-		this.posistion[1] = (this.tileFrom[1] * tileH) +
-			((tileH - this.dimensions[1])/2);
 
-		if(this.tileTo[0] != this.tileFrom[0])
-		{
-			var diff = (tileW / this.delayMove) *
-				(t - this.timeMoved);
-			this.posistion[0] += (this.tileTo[0]< this.tileFrom[0] ?
-				0 - diff : diff);
-		}
-		if(this.tileTo[1] != this.tileFrom[1])
-		{
-			var diff = (tileH / this.delayMove) *
-				(t - this.timeMoved);
-			this.posistion[1] += (this.tileTo[1]< this.tileFrom[1] ?
-				0 - diff : diff);
-		}
 
-		this.posistion[0] = Math.round(this.posistion[0]);
-		this.posistion[1] = Math.round(this.posistion[1]);
-	}
-	return true;
-};
+function endtouch(e) {
+	
+}
+function touchHandler(e) {
+    if(e.touches) {
+        playerX = e.touches[0].pageX - canvas.offsetLeft - playerWidth / 2;
+        playerY = e.touches[0].pageY - canvas.offsetTop - playerHeight / 2;
+        output.innerHTML = "Touch: "+ " x: " + playerX + ", y: " + playerY;
+        e.preventDefault();
+    }
+}
 function toIndex(x,y)
 {
 	return ((y * mapW) + x);
@@ -94,20 +69,7 @@ window.onload = function()
 	requestAnimationFrame(drawGame);
 	ctx.font = "bold 10pt sans-serif";
 
-	window.addEventListener("keydown", function(e)
-	{
-		if(e.keyCode>=37 && e.keyCode<=40)
-		{
-			keysDown[e.keyCode] = true;
-		}
-	});
-	window.addEventListener("keyup", function(e)
-	{
-		if(e.keyCode>=37 && e.keyCode<=40)
-		{
-			keysDown[e.keyCode] = false;
-		}
-	});	
+
 };
 function drawGame()
 {
@@ -124,38 +86,6 @@ function drawGame()
 			frameCount = 1;
 		}
 		else { frameCount++; }
-		if(!player.processMovement(currentFrameTime))
-		{
-			if(keysDown[38] && player.tileFrom[1]>0&&
-				gameMap[toIndex(player.tileFrom[0],
-					player.tileFrom[1]-1)] == 1)
-			{
-				player.tileTo[1]-=1;
-			}
-			else if(keysDown[40] && player.tileFrom[1]<(mapH -1)&&
-				gameMap[toIndex(player.tileFrom[0],
-					player.tileFrom[1]+1)] == 1)
-			{
-				player.tileTo[1]+=1;
-			}
-			else if(keysDown[37] && player.tileFrom[1]>0&&
-				gameMap[toIndex(player.tileFrom[0]-1,
-					player.tileFrom[1])] == 1)
-			{
-				player.tileTo[0]-=1;
-			}
-			else if(keysDown[39] && player.tileFrom[0]<(mapW -1)&&
-				gameMap[toIndex(player.tileFrom[0]+1,
-					player.tileFrom[1])] == 1)
-			{
-				player.tileTo[0]+=1;
-			}
-			if(player.tileFrom[0]!=player.tileTo[0] ||
-				player.tileFrom[1] !=player.tileTo[1])
-			{
-				player.timeMoved = currentFrameTime;
-			}
-		}
 
 		for(var y = 0; y < mapH; y++)
 		{
@@ -188,6 +118,10 @@ function drawGame()
 
 
 }
+el.addEventListener('touchstart',touchHandler, false);
+el.addEventListener('touchmove', touchHandler, false);
+el.addEventListener('touchcancel', process_touchcancel, false);
+el.addEventListener('touchend', process_touchend, false);
 /*
 var canvas = document.querySelector('canvas');
 
