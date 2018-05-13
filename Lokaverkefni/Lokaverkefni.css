@@ -1,0 +1,77 @@
+﻿body{
+	padding-top: 100px;
+	background: #efefef;
+	font-family: Arial;
+	color: black;
+	text-align: center;
+}
+header{
+	background: #d3ece1;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 25px 0 25px 0;
+	font-size: 2em;
+	letter-spacing: 15px;
+	color: #ffffff;
+}
+#search{
+	padding: 25px 0 0px 0;
+}
+input {
+	width: 40%;
+	font-size: 2em;
+	border: 1px solid #000000;
+	padding: 15px;
+	border-radius: 5px;
+}
+input:focus {
+	border: 1px solid #00cccc;
+	outline: none;
+}
+.concert{
+	display: inline-block;
+	width: 24%;
+	padding: 50px 0 50px 0; 
+	margin: 5px;
+	border: 2px solid #bfbfbf;
+	box-shadow: 1px 1px #888888;
+}
+.infoDiv{
+	line-height: 20px;
+	padding: 25px;
+	display: inline-block;
+	text-align: left;
+	font-size: 1em;
+}
+strong{
+	color: #0040a8;
+	font-size: 1.25em;
+}
+ul {
+	border-spacing: 5px;
+	font-size: 1.5em;
+	margin: auto;
+	width: 50%;
+	padding: 25px;
+    list-style-type: none;
+    display:table;
+}
+li {
+	padding: 15px;
+	text-align: center;
+	border: 1px solid black;
+    display: table-cell;
+    cursor: pointer;
+}
+li:hover{
+	background: #f6dbdb;
+}
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
