@@ -24,6 +24,7 @@ header{
 }
 #search{
 	padding: 25px 0 0px 0;
+
 }
 
 
@@ -57,11 +58,11 @@ ul {
     display:table;
 }
 li {
-	padding: 15px;
+	padding: 10px;
+	border: 1px solid purple;
 	text-align: center;
-	border: 1px solid black;
     display: table-cell;
-    cursor: pointer;
+ 
 }
 li:hover{
 	background: #f6dbdb;
@@ -69,12 +70,12 @@ li:hover{
 input {
 	width: 40%;
 	font-size: 2em;
-	border: 1px solid #000000;
-	padding: 15px;
-	border-radius: 5px;
+	border: 1px solid purple;
+	padding: 10px;
+	border-radius: 50px;
 }
 input:focus {
-	border: 1px solid #00cccc;
+	border: 1px solid purple;
 	outline: none;
 
 }
